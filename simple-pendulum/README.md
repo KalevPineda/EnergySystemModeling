@@ -22,9 +22,10 @@ Para obtener la ecuación de movimiento del péndulo, utilizaremos el formalismo
 ## Energía Cinética
 
 La velocidad tangencial de la masa $m$ es $v = l \dot{\theta}$, donde $\dot{\theta} = d\theta/dt$ es la velocidad angular. La energía cinética $K$ del sistema es:
-$$
+```math
 K = \frac{1}{2} m v^2 = \frac{1}{2} m (l \dot{\theta})^2 = \frac{1}{2} m l^2 \dot{\theta}^2 \quad (1)
-$$
+```
+
 
 ## Energía Potencial
 
