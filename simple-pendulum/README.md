@@ -1,5 +1,5 @@
 
-# Péndulo Simple: Un Análisis Teórico y Computacional con Fuerzas No Conservativas
+# Péndulo Simple (No Conservativo)
 
 **Autor:** Kalev
 **Fecha:** 5 Junio 2025
