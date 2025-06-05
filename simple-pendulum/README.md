@@ -4,7 +4,7 @@
 **Autor:** Kalev
 **Fecha:** 5 Junio 2025
 
-**Abstract:**
+**Resumen:**
 Este trabajo presenta un análisis del péndulo simple, un sistema físico fundamental, extendiendo su estudio para incluir efectos no conservativos como el amortiguamiento viscoso y un torque externo constante. Se deriva la ecuación de movimiento utilizando el formalismo de Euler-Lagrange. Posteriormente, se describe una simulación numérica implementada en el lenguaje de programación Julia, utilizando el paquete `DifferentialEquations.jl`, para resolver la ecuación diferencial resultante. Se analizan gráficamente los resultados de la simulación para un caso específico (una bola de boliche) y se comparan diferentes escenarios de amortiguamiento y torque.
 
 ---
@@ -132,7 +132,7 @@ La Figura 4 compara tres escenarios distintos, todos partiendo de $\theta(0)=0, 
 -   **Con amortiguamiento** (naranja): $b=0.65\,\text{Ns/rad}$, $T_{\text{ext}}=16\,\text{N}\cdot\text{m}$. Este es el mismo caso de la "bola de boliche" analizado previamente. Las oscilaciones se amortiguan y el sistema tiende al equilibrio.
 -   **Con torque externo (diferente)** (verde): $b=0.65\,\text{Ns/rad}$, $T_{\text{ext}}=20\,\text{N}\cdot\text{m}$. Un torque externo mayor resulta en un ángulo de equilibrio mayor ($\sin\theta_{eq} = 20 / 27.9585 \approx 0.7153$, $\theta_{eq} \approx 0.797\,\text{rad}$). Las oscilaciones también son amortiguadas.
 
-![Comparación del ángulo \(\theta(t)\) para diferentes configuraciones del péndulo: sin amortiguamiento (oscilaciones sostenidas), con amortiguamiento y \(T_{\text{ext}}=16\,\text{N}\cdot\text{m}\) (oscilaciones amortiguadas), y con amortiguamiento y \(T_{\text{ext}}=20\,\text{N}\cdot\text{m}\) (oscilaciones amortiguadas hacia un ángulo de equilibrio mayor).](pendulum_comparison_comparison.png)
+![Comparación del ángulo \(\theta(t)\) para diferentes configuraciones del péndulo: sin amortiguamiento (oscilaciones sostenidas), con amortiguamiento y \(T_{\text{ext}}=16\,\text{N}\cdot\text{m}\) (oscilaciones amortiguadas), y con amortiguamiento y \(T_{\text{ext}}=20\,\text{N}\cdot\text{m}\) (oscilaciones amortiguadas hacia un ángulo de equilibrio mayor).](boliche_comparison.png)
 *Figura 4: Comparación del ángulo $\theta(t)$ para diferentes configuraciones del péndulo.*
 
 Esta comparación ilustra claramente el papel del amortiguamiento en la disipación de energía y la estabilización del sistema, así como la influencia del torque externo en la determinación de la posición de equilibrio.
