@@ -14,37 +14,37 @@ Las coordenadas generalizadas `x₁(t), x₂(t), x₃(t)` representan los despla
 ### 1.2. Ecuaciones de Movimiento
 Utilizando el formalismo de Euler-Lagrange, se derivan las ecuaciones de movimiento, que se pueden expresar en forma matricial como:
 
-$$
+``` math
 M \ddot{\mathbf{x}}(t) + C \dot{\mathbf{x}}(t) + K \mathbf{x}(t) = \mathbf{F}(t)
-$$
+```
 
 Donde:
 - $\mathbf{x} = [x_1, x_2, x_3]^T$ es el vector de desplazamientos relativos.
 - **Matriz de Masa (M):**
-$$
+``` math
 M = \begin{bmatrix} m_1 & 0 & 0 \\ 0 & m_2 & 0 \\ 0 & 0 & m_3 \end{bmatrix}
-$$
+```
 - **Matriz de Amortiguamiento (C):**
-$$
+``` math
 C = \begin{bmatrix} c_1+c_2 & -c_2 & 0 \\ -c_2 & c_2+c_3 & -c_3 \\ 0 & -c_3 & c_3 \end{bmatrix}
-$$
+```
 - **Matriz de Rigidez (K):**
-$$
+``` math
 K = \begin{bmatrix} k_1+k_2 & -k_2 & 0 \\ -k_2 & k_2+k_3 & -k_3 \\ 0 & -k_3 & k_3 \end{bmatrix}
-$$
+```
 - **Vector de Fuerza de Excitación (F(t)):** La fuerza es inducida por la aceleración del suelo $\ddot{z}(t)$.
-$$
+``` math
 \mathbf{F}(t) = -M \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \ddot{z}(t)
-$$
+```
 
 ## 2. Solución Numérica en Julia
 
 Para resolver este sistema de ecuaciones diferenciales ordinarias (EDOs) de segundo orden, se convierte a un sistema de primer orden y se utiliza el paquete `DifferentialEquations.jl` en Julia.
 
 El estado del sistema se define como $\mathbf{u} = [\mathbf{x}^T, \dot{\mathbf{x}}^T]^T$. La EDO de primer orden es:
-$$
+``` math
 \dot{\mathbf{u}}(t) = \begin{bmatrix} \dot{\mathbf{x}} \\ \ddot{\mathbf{x}} \end{bmatrix} = \begin{bmatrix} \dot{\mathbf{x}} \\ M^{-1}(\mathbf{F}(t) - C\dot{\mathbf{x}} - K\mathbf{x}) \end{bmatrix}
-$$
+```
 
 El código en Julia implementa esta lógica, define los parámetros físicos tomados del paper de referencia, y resuelve la EDO para un intervalo de tiempo de 100 segundos.
 
@@ -58,17 +58,17 @@ El comportamiento dinámico de una estructura de tres pisos sometida a una excit
 
 El sistema de ecuaciones de movimiento resultante se expresa en forma matricial:
 
-$$
+``` math
 M \ddot{\mathbf{x}}(t) + C \dot{\mathbf{x}}(t) + K \mathbf{x}(t) = \mathbf{F}(t)
-$$
+```
 
 Donde:
 - $\mathbf{x} = [x_1, x_2, x_3]^T$ es el vector de desplazamientos relativos.
 - **Matrices del Sistema:** Las matrices de Masa (M), Amortiguamiento (C) y Rigidez (K) se ensamblan a partir de los parámetros físicos del sistema.
 - **Vector de Fuerza de Excitación:** La fuerza es inducida por la aceleración del suelo $\ddot{z}(t)$:
-$$
+``` math
 \mathbf{F}(t) = -M \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \ddot{z}(t)
-$$
+```
 
 ## 3. Solución Numérica y Parámetros
 
