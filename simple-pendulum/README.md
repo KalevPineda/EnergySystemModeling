@@ -30,9 +30,10 @@ K = \frac{1}{2} m v^2 = \frac{1}{2} m (l \dot{\theta})^2 = \frac{1}{2} m l^2 \do
 ## Energía Potencial
 
 Tomando el punto más bajo de la trayectoria ($\theta=0$) como el nivel de referencia para la energía potencial gravitatoria ($U_g=0$), la altura de la masa $m$ sobre este punto es $h = l(1 - \cos\theta)$. Por lo tanto, la energía potencial $U_g$ es:
-$$
+$
 U_g = mgh = mgl(1 - \cos\theta) \quad (2)
-$$
+$
+
 Alternativamente, si definimos $U_g=0$ cuando $\theta = \pi/2$, entonces $U_g = -mgl\cos\theta$. Ambas definiciones son válidas y conducen a la misma ecuación de movimiento, ya que solo las derivadas de la energía potencial importan. Usaremos $U_g = -mgl\cos\theta$ para simplificar el Lagrangiano.
 
 ## Lagrangiano
