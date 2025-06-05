@@ -1,6 +1,6 @@
 # Análisis Dinámico de una Estructura Tipo Edificio de 3 Pisos
 
-**Autores:** Kalev Pineda, Josue Sarate
+**Autores:**  Kalev Pineda Alvarez
 
 ## 1. Desarrollo Matemático
 
