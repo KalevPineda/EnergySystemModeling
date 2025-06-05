@@ -30,18 +30,19 @@ K = \frac{1}{2} m v^2 = \frac{1}{2} m (l \dot{\theta})^2 = \frac{1}{2} m l^2 \do
 ## Energía Potencial
 
 Tomando el punto más bajo de la trayectoria ($\theta=0$) como el nivel de referencia para la energía potencial gravitatoria ($U_g=0$), la altura de la masa $m$ sobre este punto es $h = l(1 - \cos\theta)$. Por lo tanto, la energía potencial $U_g$ es:
-$
+
+```math
 U_g = mgh = mgl(1 - \cos\theta) \quad (2)
-$
+```
 
 Alternativamente, si definimos $U_g=0$ cuando $\theta = \pi/2$, entonces $U_g = -mgl\cos\theta$. Ambas definiciones son válidas y conducen a la misma ecuación de movimiento, ya que solo las derivadas de la energía potencial importan. Usaremos $U_g = -mgl\cos\theta$ para simplificar el Lagrangiano.
 
 ## Lagrangiano
 
 El Lagrangiano $\mathcal{L}$ del sistema se define como la diferencia entre la energía cinética y la energía potencial:
-$$
+```math
 \mathcal{L} = K - U_g = \frac{1}{2} m l^2 \dot{\theta}^2 - (-mgl\cos\theta) = \frac{1}{2} m l^2 \dot{\theta}^2 + mgl\cos\theta \quad (3)
-$$
+```
 
 ## Fuerzas Generalizadas No Conservativas
 
@@ -50,49 +51,53 @@ Las fuerzas no conservativas que actúan sobre el sistema son:
 -   Torque externo: $T_{\text{ext}}$, que se asume constante.
 
 La fuerza generalizada no conservativa $Q_{nc}$ correspondiente a la coordenada $\theta$ es la suma de estos torques:
-$$
+```math
 Q_{nc} = T_{\text{ext}} - b \dot{\theta} \quad (4)
-$$
+```
 
 ## Ecuación de Euler-Lagrange
 
 La ecuación de Euler-Lagrange para un sistema con fuerzas no conservativas es:
-$$
+
+```math
 \frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial \dot{\theta}}\right) - \frac{\partial \mathcal{L}}{\partial \theta} = Q_{nc} \quad (5)
-$$
+```
+
 Calculamos las derivadas parciales del Lagrangiano:
-$$
+```math
 \frac{\partial \mathcal{L}}{\partial \dot{\theta}} = m l^2 \dot{\theta} \quad (6)
-$$
-$$
+```
+
+```math
 \frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial \dot{\theta}}\right) = m l^2 \ddot{\theta} \quad (7)
-$$
-$$
+```
+```math
 \frac{\partial \mathcal{L}}{\partial \theta} = -mgl\sin\theta \quad (8)
-$$
+```
+
 Sustituyendo estas expresiones en la ecuación de Euler-Lagrange (5):
-$$
+```math
 m l^2 \ddot{\theta} - (-mgl\sin\theta) = T_{\text{ext}} - b \dot{\theta} \quad (9)
-$$
+```
 Reordenando los términos, obtenemos la ecuación diferencial de segundo orden que describe el movimiento del péndulo no conservativo:
-$$
+```
 m l^2 \ddot{\theta} + b \dot{\theta} + mgl\sin\theta = T_{\text{ext}} \quad (10)
-$$
+```
 Esta ecuación puede expresarse como:
-$$
+```math
 \ddot{\theta} = \frac{T_{\text{ext}} - mgl\sin\theta - b \dot{\theta}}{m l^2} \quad (11)
-$$
+```
 Esta es la forma que se utiliza directamente en la simulación numérica.
 
 # Simulación Numérica en Julia
 
 La ecuación (10) es una ecuación diferencial ordinaria (EDO) no lineal de segundo orden. Para resolverla numéricamente, se convierte en un sistema de dos EDOs de primer orden. Definiendo $u_1 = \theta$ y $u_2 = \dot{\theta}$, el sistema es:
-$$
+```math
 \dot{u}_1 = u_2 \quad (12)
-$$
-$$
+```
+```math
 \dot{u}_2 = \frac{T_{\text{ext}} - mgl\sin(u_1) - b u_2}{m l^2} \quad (13)
-$$
+```
 El código en Julia proporcionado (`simple-pendulum.txt`) implementa la solución de este sistema.
 
 ## Estructura del Código
@@ -129,7 +134,7 @@ El diagrama de espacio de fases (Figura 3) grafica $\dot{\theta}$ contra $\theta
 
 ## Comparación de Diferentes Casos del Péndulo
 
-La Figura 4 compara tres escenarios distintos, todos partiendo de $\theta(0)=0, \dot{\theta}(0)=0$:
+La Figura 4 compara tres escenarios distintos, todos partiendo de `$\theta(0)=0, \dot{\theta}(0)=0$:
 -   **Sin amortiguamiento** (azul): $b=0$, $T_{\text{ext}}=16\,\text{N}\cdot\text{m}$. El péndulo oscila de forma persistente alrededor del ángulo de equilibrio dictado por el torque externo. La amplitud de estas oscilaciones es constante ya que no hay disipación de energía.
 -   **Con amortiguamiento** (naranja): $b=0.65\,\text{Ns/rad}$, $T_{\text{ext}}=16\,\text{N}\cdot\text{m}$. Este es el mismo caso de la "bola de boliche" analizado previamente. Las oscilaciones se amortiguan y el sistema tiende al equilibrio.
 -   **Con torque externo (diferente)** (verde): $b=0.65\,\text{Ns/rad}$, $T_{\text{ext}}=20\,\text{N}\cdot\text{m}$. Un torque externo mayor resulta en un ángulo de equilibrio mayor ($\sin\theta_{eq} = 20 / 27.9585 \approx 0.7153$, $\theta_{eq} \approx 0.797\,\text{rad}$). Las oscilaciones también son amortiguadas.
