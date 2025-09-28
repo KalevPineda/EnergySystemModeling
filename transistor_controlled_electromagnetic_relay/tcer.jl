@@ -30,7 +30,7 @@ i_c0 = 0.0              # Condición inicial: la corriente es cero al inicio
 tspan = (0.0, 0.5)     # Intervalo de tiempo para la simulación (0 a 50 ms)
 
 # --- Voltajes de Entrada para Simular ---
-voltajes_entrada = [5.0, 3.0, 7.0]
+voltajes_entrada = [5.0, 9.0, 12.0,24.0,48.0]
 resultados = []
 
 # --- Bucle para simular con cada voltaje de entrada ---
